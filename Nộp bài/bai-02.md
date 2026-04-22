@@ -48,9 +48,6 @@ Nhiệm vụ:
 Chưa cần giải bài toán chính.
 ```
 
-> **Lưu ý khi dùng**: Chờ AI xác nhận và tóm tắt lại đúng bối cảnh trước khi gửi Prompt 1.
-> Nếu AI tóm tắt sai → chỉnh brief rồi gửi lại Prompt 0, không tiếp tục stack.
-
 ---
 
 ### Prompt 1 — Làm rõ bài toán (Clarify)
@@ -87,10 +84,6 @@ Chưa cần giải bài toán chính.
 - Tốt nếu không có câu hỏi thừa hoặc quá hiển nhiên.
 - Kém nếu lệch sang bối cảnh kinh doanh truyền thống — phải giữ đúng domain MLM/Đại lý mạng lưới/Bán hàng trực tiếp.
 ```
-
-> **Lưu ý khi dùng**: Sau khi nhận output Prompt 1, **trả lời 5 câu hỏi làm rõ** trước khi gửi Prompt 2.
-> Ví dụ: tần suất có thể cam kết, nền tảng ưu tiên, số lượng video Zoom sẵn có...
-> Bỏ qua bước này → Prompt 2 sẽ dựa trên giả định thay vì thông tin thật của bạn.
 
 ---
 
@@ -252,7 +245,7 @@ từ Prompt 4 (A hoặc B):
 [Context]
 - Dựa trên Content Matrix (Prompt 3) và phiên bản A hoặc B (Prompt 4).
 - Leader tự làm một mình, không trợ lý, thời gian hạn chế.
-- Mục tiêu tháng đầu: xây thói quen đăng đều — không cần hoàn hảo, 
+- Mục tiêu tháng đầu: xây dựng thói quen đăng đều đặn — không cần hoàn hảo, 
   cần bền vững.
 
 [Constraints]
@@ -260,7 +253,7 @@ từ Prompt 4 (A hoặc B):
 - Phải có ít nhất 2 ngày nghỉ/tuần — không đăng bài.
 - Không lặp cùng 1 loại content 2 ngày liên tiếp.
 - Tuần 1 chỉ dùng các loại content có độ khó "Dễ" — tăng dần từ tuần 2.
-- Trình bày dạng bảng, chia theo 4 tuần.
+- Trình bày dạng bảng, chia làm 4 tuần.
 
 [Output]
 - Bảng lịch 30 ngày chia theo tuần:
@@ -284,3 +277,17 @@ từ Prompt 4 (A hoặc B):
 - Tốt nếu có sự đa dạng — không có tuần nào toàn 1 loại content.
 - Kém nếu lịch dày đặc đến mức Leader tự làm một mình không thể duy trì.
 ```
+
+
+### 9.2. Tiêu chí tự chấm (rubric gợi ý)
+
+| Tiêu chí                 | Mô tả                                                                                          | Điểm (0–5) |
+|--------------------------|------------------------------------------------------------------------------------------------|-----------|
+| Alignment với Brief      | Stack bám sát problem, audience, scope, output trong Framing Brief                           | 4/5        |
+| Cấu trúc RTC-COE         | Mỗi prompt có Role, Task, Context, Constraints, Output rõ ràng                               | 5/5        |
+| Tách phase hợp lý        | Các prompt thực sự xử lý các nhiệm vụ khác nhau, không lặp lại cùng một task                 | 4/5        |
+| Tính tái sử dụng         | Stack có thể áp dụng lại cho chủ đề khác trong cùng domain với ít chỉnh sửa                  | 4/5        |
+| Chuẩn bị cho Buổi 3–4    | Output của stack có thể dùng làm input cho Decomposition & Information Architecture (IA)      | ?/5        |
+| Clarity                  | Văn bản rõ ràng, dễ hiểu, tránh mơ hồ                                                         | 4/5        |
+
+---
