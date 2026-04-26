@@ -175,7 +175,8 @@ Chưa cần giải bài toán chính.
 
 [Evaluation]
 - Tốt nếu cây bao quát đủ 6 chiều đã xác định, không bỏ sót.
-- Tốt nếu ví dụ gắn với thực tế Leader MLM/Đại lý, không chung chung.
+- Tốt nếu ví dụ đề cập ít nhất 1 trong: tuyển sỉ, tuyến dưới F1/F2, buổi Zoom đào tạo, commission, hệ thống đại lý.
+- Kém nếu ví dụ dùng ngành khác thay thế (cửa hàng cà phê, freelancer, kinh doanh thông thường...).
 - Tốt nếu các nhánh không chồng chéo — mỗi thành phần chỉ thuộc một nhóm duy nhất.
 - Có thể dùng cây này làm xương sống cho Prompt 3.
 ```
@@ -211,15 +212,11 @@ cho Leader MLM/Đại lý tự vận hành.
 - Không đề xuất nội dung đòi hỏi ekip, studio, hay ngân sách quảng cáo.
 
 [Output]
-- Bảng Content Matrix với các cột:
-  1. Loại nội dung (tên ngắn 2–4 từ)
-  2. Mô tả
-  3. Ví dụ cụ thể trong domain MLM/Đại lý
-  4. Mục đích (tuyển người / bán hàng / truyền cảm hứng…)
-  5. Tần suất (ngày/tuần/tháng)
-  6. Kênh phù hợp (TikTok / Facebook / cả hai)
-  7. Độ khó (Dễ / Trung bình / Khó)
-  8. Hành động Leader có thể làm ngay (dưới 30 phút)
+- Bảng với 5–7 hàng (mỗi hàng = 1 loại nội dung), 8 cột theo thứ tự:
+
+  | Loại nội dung | Mô tả | Ví dụ (MLM/Đại lý) | Mục đích | Tần suất | Kênh | Độ khó | Hành động ngay (<30') |
+  |---|---|---|---|---|---|---|---|
+  | (điền) | ... | ... | ... | ... | ... | ... | ... |
 
 [Evaluation]
 - Tốt nếu bảng có thể in ra và dùng ngay làm lịch content tháng đầu mà không cần chỉnh sửa thêm.
@@ -239,14 +236,12 @@ trong lĩnh vực MLM/Đại lý mạng lưới.
 
 [Task]
 1. Chỉ ra 2–3 điểm mạnh của Content Matrix (về tính thực tế, tính dễ làm, tính nhất quán…).
-2. Chỉ ra ít nhất 5 điểm yếu hoặc lỗ hổng, bao gồm:
+2. Liệt kê tất cả điểm yếu hoặc lỗ hổng tìm được, bao gồm:
    - Loại nội dung nào dễ gây hiểu nhầm hoặc mất thiện cảm với người lạ
    - Rủi ro vi phạm pháp lý hoặc chính sách nền tảng (TikTok/Facebook)
    - Loại nội dung nào khó duy trì với người tự làm một mình
    - Chỗ nào còn thiếu để xây dựng lòng tin trước khi tuyển người
-3. Đề xuất 2 phiên bản điều chỉnh:
-   - Phiên bản A: rút gọn cho Leader mới bắt đầu (tuần đầu tiên)
-   - Phiên bản B: mở rộng cho Leader đã có nền tảng và muốn scale
+   Sau đó tổng kết: 3 điểm ưu tiên giải quyết trước.
 
 [Context]
 - Dựa trên Content Matrix đã tạo ở Prompt 3.
@@ -261,24 +256,23 @@ trong lĩnh vực MLM/Đại lý mạng lưới.
 
 [Output]
 1. Điểm mạnh (2–3 điểm)
-2. Điểm yếu/lỗ hổng (ít nhất 5 điểm + gợi ý cải thiện cụ thể)
+2. Danh sách điểm yếu/lỗ hổng (toàn bộ, mỗi điểm kèm gợi ý cải thiện cụ thể)
+   → Tổng kết: 3 điểm ưu tiên giải quyết trước
 3. Bảng tóm tắt rủi ro pháp lý:
    - Loại nội dung | Rủi ro | Mức độ | Cách phòng tránh
 4. Bảng chấm điểm Content Matrix theo tiêu chí:
    - Tính khả thi | Tính tin cậy với người lạ | Tính tuân thủ pháp lý | Dễ duy trì một mình
-5. Phiên bản A — rút gọn cho Leader mới bắt đầu (kèm bảng lịch tuần cụ thể)
-6. Phiên bản B — mở rộng cho Leader đã có nền tảng (kèm bảng lịch tuần cụ thể)
 
 [Evaluation]
-- Tốt nếu điểm yếu nêu cụ thể, có dẫn chứng từ Content Matrix, không nói chung chung.
+- Tốt nếu danh sách điểm yếu toàn diện, không bỏ sót loại nội dung nào trong bảng.
+- Tốt nếu 3 điểm ưu tiên được chọn có lý do rõ ràng — không chọn ngẫu nhiên.
 - Tốt nếu bảng rủi ro pháp lý thực tế với nền tảng TikTok/Facebook tại Việt Nam.
-- Tốt nếu 2 phiên bản A/B có thể triển khai ngay mà không cần hỏi thêm.
 - Kém nếu phê bình chung chung mà không có gợi ý cải thiện cụ thể.
 ```
 
 ---
 
-### Prompt 5 — Thiết kế lịch content 30 ngày (Design)
+### Prompt 5 — Phiên bản A/B & Lịch content 30 ngày (Design)
 
 *Task type chính: design + synthesize*
 
@@ -287,19 +281,25 @@ trong lĩnh vực MLM/Đại lý mạng lưới.
 tự vận hành kênh cá nhân.
 
 [Task]
-Dựa trên Content Matrix từ Prompt 3 và phiên bản điều chỉnh đã chọn 
-từ Prompt 4 (A hoặc B):
-1. Thiết kế lịch content 30 ngày cụ thể theo từng ngày.
-2. Với mỗi ngày, chỉ rõ:
-   - Loại content (từ Content Matrix)
+1. Từ kết quả phân tích ở Prompt 4, đề xuất 2 phiên bản điều chỉnh:
+   - Phiên bản A: rút gọn cho Leader mới bắt đầu — nêu rõ đặc điểm 
+     + kèm lịch tuần mẫu 7 ngày
+   - Phiên bản B: mở rộng cho Leader đã có nền tảng và muốn scale — 
+     nêu rõ đặc điểm + kèm lịch tuần mẫu 7 ngày
+2. Dựa trên phiên bản Leader xác nhận ([CHỌN: A / B] — điền trước 
+   khi gửi prompt này):
+   Thiết kế lịch content 30 ngày đầy đủ. Với mỗi ngày, chỉ rõ:
+   - Loại content
    - Kênh đăng (TikTok / Facebook / cả hai)
    - Gợi ý chủ đề cụ thể (1 dòng)
 
 [Context]
-- Dựa trên Content Matrix (Prompt 3) và phiên bản A hoặc B (Prompt 4).
+- Dựa trên bảng nội dung (Prompt 3) và kết quả phân tích (Prompt 4).
+- Phiên bản A/B được trình bày ở bước 1 — Leader xác nhận chọn 
+  trước khi AI thiết kế lịch 30 ngày đầy đủ.
 - Leader tự làm một mình, không trợ lý, thời gian hạn chế.
-- Mục tiêu tháng đầu: xây dựng thói quen đăng đều đặn — không cần hoàn hảo, 
-  cần bền vững.
+- Mục tiêu tháng đầu: xây dựng thói quen đăng đều đặn — không cần 
+  hoàn hảo, cần bền vững.
 
 [Constraints]
 - Tối đa 1 bài/ngày — không được vượt quá.
@@ -309,7 +309,15 @@ từ Prompt 4 (A hoặc B):
 - Trình bày dạng bảng, chia làm 4 tuần.
 
 [Output]
-- Bảng lịch 30 ngày chia theo tuần:
+Phiên bản A — [tóm tắt đặc điểm, 2–3 dòng]
+  Lịch tuần mẫu: | Ngày | Loại content | Kênh | Gợi ý chủ đề |
+
+Phiên bản B — [tóm tắt đặc điểm, 2–3 dòng]
+  Lịch tuần mẫu: | Ngày | Loại content | Kênh | Gợi ý chủ đề |
+
+─── [Tôi chọn Phiên bản: ___ ] ───
+
+Lịch 30 ngày (phiên bản đã chọn), chia theo tuần:
 
   Tuần 1 — [Tên chủ đề tuần]
   | Ngày | Loại content | Kênh | Gợi ý chủ đề |
@@ -319,16 +327,20 @@ từ Prompt 4 (A hoặc B):
 
   (lặp lại cho Tuần 2, 3, 4)
 
-- Tổng kết cuối bảng:
+Tổng kết cuối bảng:
   - Tổng số bài/tháng
   - Phân bổ theo loại content (%)
   - Phân bổ theo kênh (%)
 
 [Evaluation]
-- Tốt nếu lịch có thể in ra và dùng ngay mà không cần chỉnh sửa thêm.
+- Tốt nếu 2 phiên bản A/B khác biệt rõ ràng về mức độ yêu cầu — 
+  không chỉ là "ngắn hơn/dài hơn".
+- Tốt nếu lịch 30 ngày có thể in ra và dùng ngay mà không cần 
+  chỉnh sửa thêm.
 - Tốt nếu tuần 1 đủ nhẹ để Leader mới bắt đầu không bỏ cuộc.
 - Tốt nếu có sự đa dạng — không có tuần nào toàn 1 loại content.
-- Kém nếu lịch dày đặc đến mức Leader tự làm một mình không thể duy trì.
+- Kém nếu lịch dày đặc đến mức Leader tự làm một mình không thể 
+  duy trì.
 ```
 
 ### Tiêu chí tự chấm Prompt Stack V1 (rubric gợi ý)
@@ -344,8 +356,6 @@ từ Prompt 4 (A hoặc B):
 
 ---
 
-
----
 
 ## Prompt Stack V2 — Workflow tái chế bài giảng → Post/Video
 
@@ -666,5 +676,319 @@ TEMPLATE TÁI CHẾ NỘI DUNG — Leader MLM/Đại lý
 - Kém nếu ranh giới cơ bản/nâng cao không rõ ràng.
 ```
 
+### Tiêu chí tự chấm Prompt Stack V2 (rubric gợi ý)
+
+| Tiêu chí              | Mô tả                                                                                                           | Điểm (0–5) |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------|-----------|
+| Alignment với Brief   | Stack bám sát output "Workflow tái chế bài giảng", đúng audience Leader tự chủ không trợ lý                    | 4/5        |
+| Cấu trúc RTC-COE      | Mỗi prompt có Role, Task, Context, Constraints, Output rõ ràng                                                  | 5/5        |
+| Tách phase hợp lý     | P1 kiểm kê kho → P2 bóc tách luồng → P3 SOP → P4 phản biện → P5 template — không lặp task giữa các bước       | 4/5        |
+| Tính SOP              | Cấu trúc Phần Chung + Luồng A/B đủ rõ để F1/F2 làm theo mà không cần hỏi Leader; checklist tự QC có ở mỗi luồng | 4/5        |
+| Tính tái sử dụng      | Stack có thể áp dụng cho bất kỳ hệ thống nào cần tái chế "1 nội dung gốc → nhiều định dạng"                    | 4/5        |
+| Chuẩn bị cho Buổi 3–4 | SOP và Template là dạng decomposition thực tế; cây 2 luồng từ P2 có thể dùng làm case study cho IA             | ?/5        |
+
 ---
 
+
+
+## Prompt Stack V3 — Playbook Prompt mẫu cho Leader MLM/Đại lý
+
+### Context (tóm tắt Framing Brief)
+
+- **Topic**: Bộ prompt mẫu giúp Leader MLM/Đại lý dùng AI tạo content mà không cần biết viết prompt
+- **Problem**: Leader không có hệ thống prompt — mỗi lần cần content lại phải nghĩ từ đầu, mất thời gian và output không nhất quán
+- **Audience**: Leader/Boss hệ thống tự chủ hoàn toàn, không có trợ lý, cần công cụ dùng lại được
+- **Scope**: 8 tình huống — viết caption lifestyle, caption tái chế bài giảng, post quan điểm nghề, story đội nhóm, trả lời inbox/bình luận, viết bio kênh, tạo ảnh minh họa, viết kịch bản video ngắn (< 1 phút 30 giây)
+- **Output ưu tiên**: Cẩm nang 1 trang — toàn bộ prompt mẫu, tra cứu nhanh, in được
+
+> **Lưu ý khi dùng**: Dùng chung Prompt 0 — Grounding Brief từ Stack 1.
+> Sau khi nhận output Prompt 1, trả lời 5 câu hỏi làm rõ trước khi gửi Prompt 2.
+
+---
+
+### Prompt 1 — Làm rõ nhu cầu Playbook (Clarify)
+
+*Task type chính: explain + diagnose*
+
+```
+[Role] Chuyên gia tư vấn thiết kế hệ thống prompt cho Leader 
+MLM/Đại lý tự vận hành.
+
+[Task]
+1. Tóm tắt lại bài toán Playbook Prompt từ Framing Brief.
+2. Liệt kê 5–7 giả định về cách Leader hiện đang viết prompt 
+   (copy paste từ mạng, viết thủ công mỗi lần, không có hệ thống...).
+3. Đề xuất 5 câu hỏi cần làm rõ về nhu cầu và thói quen 
+   dùng prompt của Leader trước khi thiết kế Playbook.
+
+[Context]
+- Đây là bước làm rõ yêu cầu, chưa bước vào thiết kế prompt.
+- Domain: Leader MLM/Đại lý, 8 tình huống đã xác định:
+  viết caption lifestyle, caption tái chế bài giảng, post quan điểm 
+  nghề, story đội nhóm, trả lời inbox/bình luận, viết bio kênh, 
+  tạo ảnh minh họa, viết kịch bản video ngắn (< 1 phút 30 giây).
+- Leader tự chủ hoàn toàn, không trợ lý.
+
+[Constraints]
+- Không thiết kế prompt mẫu ở bước này — chỉ làm rõ nhu cầu 
+  và đặt câu hỏi.
+- Ngôn ngữ đơn giản, tránh thuật ngữ kỹ thuật AI.
+- Giả định và câu hỏi phải phản ánh đúng thực tế người tự làm 
+  một mình, không rành viết prompt.
+- Trình bày dạng đầu mục + gạch đầu dòng.
+
+[Output]
+1. Tóm tắt bài toán Playbook (3–5 câu)
+2. Danh sách "Giả định hiện tại" (5–7 giả định)
+3. Danh sách "Câu hỏi cần làm rõ" (5 câu hỏi)
+
+[Evaluation]
+- Tốt nếu giả định phản ánh đúng thực tế Leader chưa có hệ 
+  thống prompt, không giả định đã thành thạo.
+- Tốt nếu câu hỏi giúp phát hiện điểm tắc nghẽn thực tế 
+  (tình huống hay gặp nhất, loại output cần nhất, thời gian sẵn sàng).
+- Tốt nếu không có câu hỏi thừa hoặc quá hiển nhiên.
+- Kém nếu lệch sang domain kinh doanh truyền thống.
+- Kém nếu dùng thuật ngữ kỹ thuật AI mà Leader không hiểu.
+```
+
+---
+
+### Prompt 2 — Bóc tách tình huống & biến số (Structure)
+
+*Task type chính: design (extract & structure)*
+
+```
+[Role] Người sắp xếp tri thức chuyên phân loại tình huống sử 
+dụng prompt cho Leader MLM/Đại lý mạng lưới.
+
+[Task]
+- Dựa trên kết quả làm rõ từ Prompt 1.
+- Phân loại 8 tình huống thành 3–4 nhóm lớn theo mục đích.
+- Với mỗi tình huống, xác định rõ:
+  - Đầu vào cần có (Leader phải cung cấp gì trước khi dùng prompt)
+  - Đầu ra mong muốn (output AI cần tạo ra)
+  - Biến số cần điền (tối đa 3 biến/tình huống)
+
+[Context]
+- Dựa trên kết quả từ Prompt 1 (giả định, câu hỏi đã làm rõ).
+- 8 tình huống: viết caption lifestyle, caption tái chế bài giảng, 
+  post quan điểm nghề, story đội nhóm, trả lời inbox/bình luận, 
+  viết bio kênh, tạo ảnh minh họa, viết kịch bản video ngắn 
+  (< 1 phút 30 giây).
+- Leader tự chủ, không trợ lý — biến số phải đơn giản, 
+  dễ điền.
+
+[Constraints]
+- Không thêm tình huống ngoài 8 cái đã xác định.
+- Tối đa 3–4 nhóm lớn — các nhóm không chồng chéo về mục đích.
+- Mỗi biến số phải đặt tên đơn giản, dễ hiểu 
+  (ví dụ: [TÊN SẢN PHẨM], [KẾT QUẢ CỤ THỂ], [TÊN THÀNH VIÊN]).
+- Trình bày dạng cây phân cấp, tách rõ từng nhóm.
+
+[Output]
+- Cây phân cấp:
+  Nhóm A: [Tên nhóm — mục đích]
+    Tình huống 1:
+      - Đầu vào: ...
+      - Đầu ra: ...
+      - Biến số: [BIẾN 1], [BIẾN 2], [BIẾN 3]
+    Tình huống 2: ...
+  Nhóm B: ...
+
+[Evaluation]
+- Tốt nếu 3–4 nhóm có mục đích khác biệt rõ ràng, không chồng chéo.
+- Tốt nếu biến số đặt tên dễ hiểu, Leader điền được ngay.
+- Tốt nếu đầu vào/đầu ra phản ánh đúng thực tế từng tình huống.
+- Kém nếu có tình huống nào thiếu biến số hoặc biến số quá phức tạp.
+- Kém nếu lệch sang domain kinh doanh truyền thống.
+```
+
+---
+
+### Prompt 3 — Viết prompt template (Refine)
+
+*Task type chính: refine + design*
+
+```
+[Role] Chuyên gia viết prompt template có thể chuyển giao cho 
+Leader MLM/Đại lý tự vận hành.
+
+[Task]
+1. Từ cây phân cấp ở Prompt 2, viết prompt template cho 
+   từng tình huống.
+2. Mỗi template bao gồm:
+   - Tên tình huống (ngắn gọn 2–4 từ)
+   - Prompt mẫu với [BIẾN] được đánh dấu rõ
+   - Gợi ý điền [BIẾN] (ví dụ cụ thể trong domain MLM/Đại lý)
+   - Ví dụ prompt đã điền hoàn chỉnh
+
+[Context]
+- Dựa trên cây phân cấp từ Prompt 2.
+- Leader không rành viết prompt — template phải đủ đơn giản 
+  để điền [BIẾN] vào là dùng được ngay.
+- Mục tiêu: Leader dùng được mà không cần hiểu cách hoạt 
+  động của AI.
+
+[Constraints]
+- Mỗi prompt tối đa 100 từ — ngắn gọn, không lan man.
+- Tối đa 3 biến số mỗi prompt.
+- Mỗi [BIẾN] phải có gợi ý ví dụ ngay bên cạnh 
+  (ví dụ: [TÊN THÀNH VIÊN — ví dụ: "chị Lan"]).
+- Không dùng thuật ngữ kỹ thuật AI trong prompt.
+- Ngôn ngữ tự nhiên, giống cách Leader nói chuyện thật.
+
+[Output]
+- Bảng prompt template:
+  | Tình huống | Prompt mẫu (có [BIẾN]) | Gợi ý điền | Ví dụ đã điền | Đầu ra kỳ vọng |
+
+[Evaluation]
+- Tốt nếu Leader điền [BIẾN] vào là ra content dùng được ngay.
+- Tốt nếu ví dụ đã điền phản ánh đúng domain MLM/Đại lý, 
+  không chung chung.
+- Kém nếu có biến số nào khó hiểu hoặc không biết điền gì.
+- Kém nếu prompt dài quá 100 từ sau khi điền biến.
+- Kém nếu quy trình chỉ phù hợp với 1 người — người mới 
+  bắt đầu phải dùng được.
+```
+
+---
+
+### Prompt 4 — Phản biện & Kiểm định Playbook (Critique)
+
+*Task type chính: critique*
+
+```
+[Role] Chuyên gia QC hệ thống prompt cho cá nhân tự chủ 
+trong lĩnh vực MLM/Đại lý mạng lưới.
+
+[Task]
+1. Chỉ ra 2–3 điểm mạnh của bộ prompt template (về tính 
+   đơn giản, tính dùng lại, tính domain-specific).
+2. Chỉ ra ít nhất 5 điểm yếu/lỗ hổng, bao gồm:
+   - Prompt nào dễ ra output chung chung không dùng được
+   - Biến số nào khó điền với người không rành domain MLM
+   - Tình huống nào thiếu ví dụ cụ thể hoặc ví dụ không sát thực tế
+   - Prompt nào dễ gây bỏ cuộc nhất — và lý do cụ thể tại sao
+   - Chỗ nào Playbook chưa đủ phổ quát để người mới dùng được
+3. Đề xuất 2 phiên bản:
+   - Phiên bản A: bộ prompt tối giản (3–4 tình huống cốt lõi) 
+     cho Leader mới bắt đầu
+   - Phiên bản B: bộ prompt đầy đủ (cả 8 tình huống) cho 
+     Leader đã quen dùng AI
+
+[Context]
+- Dựa trên bảng prompt template từ Prompt 3.
+- Leader tự chủ, không trợ lý, không rành kỹ thuật AI.
+- Playbook cần chuyển giao được cho F1/F2.
+- Domain: MLM/Đại lý mạng lưới/Bán hàng trực tiếp.
+
+[Constraints]
+- Tập trung vào tính khả thi thực tế, không phê bình lý thuyết.
+- Nếu chỗ nào chưa tốt phải giải thích cụ thể lý do và đưa 
+  gợi ý cải thiện luôn.
+- Không viết lại toàn bộ Playbook — chỉ chỉ ra vùng cần 
+  điều chỉnh.
+- Trình bày dạng đầu mục + gạch đầu dòng.
+
+[Output]
+1. Điểm mạnh (2–3 điểm)
+2. Điểm yếu/lỗ hổng (ít nhất 5 điểm + gợi ý cải thiện cụ thể)
+3. Bảng rủi ro prompt:
+   - Tình huống | Rủi ro output kém | Mức độ | Cách phòng tránh
+4. Bảng chấm điểm Playbook theo tiêu chí:
+   - Tính đơn giản | Tính dùng lại | Domain-specific | 
+     Dễ chuyển giao cho F1/F2
+5. Phiên bản A — tối giản (3–4 tình huống cốt lõi)
+6. Phiên bản B — đầy đủ (cả 8 tình huống)
+
+[Evaluation]
+- Tốt nếu điểm yếu nêu cụ thể, có dẫn chứng từ prompt 
+  template, không nói chung chung.
+- Tốt nếu 2 phiên bản A/B có thể triển khai ngay mà không 
+  cần hỏi thêm.
+- Tốt nếu bảng rủi ro thực tế với domain MLM/Đại lý.
+- Kém nếu phê bình chung chung mà không có gợi ý cải thiện.
+- Kém nếu Playbook chỉ phù hợp với 1 người — người mới 
+  bắt đầu phải dùng được.
+```
+
+---
+
+### Prompt 5 — Cẩm nang 1 trang (Design)
+
+*Task type chính: design + synthesize*
+
+```
+[Role] Template designer chuyên thiết kế tài liệu tham khảo 
+nhanh cho Leader MLM/Đại lý tự vận hành.
+
+[Task]
+1. Đóng gói toàn bộ prompt template thành Cẩm nang 1 trang 
+   dạng bảng tra cứu nhanh.
+2. Bố cục theo nhóm tình huống từ Prompt 2.
+3. Mỗi ô trong bảng gồm:
+   - Tên tình huống
+   - Prompt mẫu rút gọn (có [BIẾN] được đánh dấu)
+   - 1 gợi ý điền [BIẾN] ngắn
+
+[Context]
+- Dựa trên bảng prompt template (Prompt 3) và phiên bản A/B 
+  (Prompt 4).
+- Mục tiêu: Leader mở Cẩm nang ra là tìm được prompt cần 
+  dùng trong 30 giây, không cần đọc toàn bộ.
+- Dùng được cả khi in ra hoặc lưu trên điện thoại.
+
+[Constraints]
+- Toàn bộ nội dung phải vừa 1 trang A4 hoặc 1 màn hình 
+  điện thoại (khi phóng to vừa đủ đọc).
+- Mỗi ô prompt không quá 3 dòng.
+- Sắp xếp theo nhóm mục đích — không sắp xếp ngẫu nhiên.
+- Font/bố cục phải in được rõ ràng, không cần màu sắc 
+  phức tạp.
+- Cuối trang có ô ghi chú trống để Leader tự thêm prompt 
+  của riêng mình.
+
+[Output]
+CẨM NANG PROMPT — Leader MLM/Đại lý
+(1 trang A4 — bảng tra cứu nhanh)
+
+┌─────────────────────────────────────────┐
+│ NHÓM A: [Tên nhóm]                      │
+├──────────────┬──────────────────────────┤
+│ Tình huống 1 │ Prompt: ...              │
+│              │ Điền: [BIẾN] = ví dụ... │
+├──────────────┼──────────────────────────┤
+│ Tình huống 2 │ ...                      │
+└──────────────┴──────────────────────────┘
+
+[lặp lại cho các nhóm B, C, D]
+
+┌─────────────────────────────────────────┐
+│ GHI CHÚ — Prompt của tôi:               │
+│ ___________________________________     │
+└─────────────────────────────────────────┘
+
+[Evaluation]
+- Tốt nếu Leader tìm được prompt cần dùng trong 30 giây 
+  mà không cần đọc toàn bộ.
+- Tốt nếu bố cục in ra rõ ràng trên A4, không bị chật chội.
+- Tốt nếu ô ghi chú giúp Leader cá nhân hóa Playbook 
+  theo thời gian.
+- Kém nếu prompt nào thiếu gợi ý điền [BIẾN].
+- Kém nếu bố cục không in được vừa 1 trang A4.
+- Kém nếu không có ô ghi chú để Leader tự thêm vào.
+```
+
+### Tiêu chí tự chấm Prompt Stack V3 (rubric gợi ý)
+
+| Tiêu chí              | Mô tả                                                                                                      | Điểm (0–5) |
+|-----------------------|------------------------------------------------------------------------------------------------------------|-----------|
+| Alignment với Brief   | Stack bám sát output "Playbook Prompt mẫu", 8 tình huống đúng domain MLM/Đại lý trong Framing Brief       | 4/5        |
+| Cấu trúc RTC-COE      | Mỗi prompt có Role, Task, Context, Constraints, Output rõ ràng                                             | 5/5        |
+| Tách phase hợp lý     | P1 clarify → P2 phân nhóm + biến số → P3 viết template → P4 phản biện → P5 Cẩm nang — mỗi phase khác nhiệm vụ | 5/5        |
+| Tính domain-specific  | Template prompt gắn chặt với domain MLM/Đại lý — [BIẾN] được đặt tên theo ngữ cảnh thực chiến             | 4/5        |
+| Tính tái sử dụng      | Cấu trúc [BIẾN] giúp Leader dùng lại prompt không cần viết từ đầu; Cẩm nang có thể chuyển giao cho F1/F2  | 5/5        |
+| Chuẩn bị cho Buổi 3–4 | Cẩm nang 1 trang là artifact có thể phân tích theo IA; cây phân nhóm ở P2 là dạng decomposition thực tế   | ?/5        |
+
+---
