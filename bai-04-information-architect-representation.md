@@ -1,5 +1,5 @@
 # Buổi 4 — Information Architecture & Representation  
-> Biến bản đồ tri thức thành cấu trúc dễ dạy, dễ so sánh, dễ dùng
+> Biến bản đồ tri thức thành cấu trúc dễ đọc, dễ khai thác, dễ so sánh, dễ dùng
 
 ---
 
