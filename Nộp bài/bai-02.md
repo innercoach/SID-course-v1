@@ -427,8 +427,7 @@ cho Leader MLM/Đại lý.
 *Task type chính: design (extract & structure)*
 
 ```
-[Role] Chuyên gia thiết kế quy trình content cho cá nhân và 
-doanh nghiệp nhỏ trong lĩnh vực MLM/Đại lý mạng lưới.
+[Role] Chuyên gia thiết kế quy trình content cho cá nhân và doanh nghiệp nhỏ trong lĩnh vực MLM/Đại lý mạng lưới.
 
 [Task]
 - Dựa trên kết quả kiểm kê kho nội dung từ Prompt 1.
