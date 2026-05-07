@@ -1,0 +1,12 @@
+.obsidian
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.zip
+*.tar.gz
