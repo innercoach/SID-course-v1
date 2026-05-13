@@ -103,8 +103,12 @@ Bóc domain của bạn thành cây nhiều tầng dễ dạy, dễ dùng.
 
 #### A. Functional Map
 
+**Workflow 1 — Tuyến Đào tạo**: Dùng AI tái chế bài giảng Zoom → Content TikTok/Facebook
+
+> **Scope**: Workflow này phục vụ riêng tuyến *Đào tạo tuyến dưới* (node 2 trong Decomposition Tree). Các tuyến Uy tín & Quan điểm và Sản phẩm áp dụng quy trình tương tự, thay Input bằng nguồn nội dung tương ứng.
+
 ```markdown
-Workflow: Dùng AI tái chế bài giảng Zoom → Content TikTok/Facebook
+Workflow 1: Tái chế bài giảng Zoom nội bộ → Content đào tạo tuyến dưới
 
 Input: Recording buổi Zoom đào tạo nội bộ (60–90 phút)
 
@@ -135,26 +139,68 @@ Input: Recording buổi Zoom đào tạo nội bộ (60–90 phút)
 Output: 1 clip TikTok + 1 bài Facebook từ 1 buổi Zoom, tổng thời gian tự làm < 30 phút
 ```
 
+---
+
+**Workflow 2 — Tuyến Tuyển dụng**: Dùng AI biến story cá nhân / testimonial → Content tuyển F1
+
+```markdown
+Workflow 2: Story cá nhân / Testimonial F1 → Content tuyển dụng
+
+Input: Story thật của Leader hoặc F1/F2 đạt kết quả (kể miệng hoặc ghi chú thô)
+
+1. [Thu thập & làm rõ câu chuyện]
+   1.1. Leader kể lại story theo khung: Trước – Bước ngoặt – Sau – Bài học
+   1.2. Nếu là testimonial F1: nhắn tin xin phép, hỏi 3 câu (Trước khi gia nhập bạn thế nào? Bước ngoặt là gì? Kết quả hiện tại?)
+   1.3. Ghi chú thô hoặc voice note → paste vào AI để làm sạch
+
+2. [Bóc content từ story]
+   2.1. Dùng AI viết caption Facebook dạng storytelling (300–500 chữ)
+   2.2. Dùng AI viết script TikTok 60s từ cùng story (hook mạnh + 3 điểm chính + CTA)
+   2.3. Dùng AI tạo dạng Q&A ngắn để đăng story Instagram/Facebook
+
+3. [Chuẩn hóa & kiểm tra]
+   3.1. Kiểm tra không hứa hẹn thu nhập cụ thể, không dùng từ bị hạn chế quảng cáo
+   3.2. Xác nhận lại với F1 nếu dùng testimonial của họ trước khi đăng
+
+4. [Sản xuất & đăng]
+   4.1. Chụp ảnh / quay video ngắn minh họa (screenshot kết quả, ảnh nhận thưởng)
+   4.2. Đăng Facebook trước (audience rộng hơn cho tuyển dụng), TikTok sau
+
+Output: 1 bài Facebook storytelling + 1 script TikTok, tổng thời gian < 30 phút
+```
+
 #### B. Stakeholder Map
 
 ```markdown
-Stakeholder 1 — [Leader/Boss hệ thống (người dùng trực tiếp)]
+Stakeholder 1 — Leader/Boss hệ thống (người dùng trực tiếp)
 - Kỳ vọng: Có kênh TikTok/Facebook chuyên nghiệp, tuyển được F1 mới mà không tốn quá nhiều thời gian
 - Sợ: Bị hiểu lầm là spam/lừa đảo; làm content sai luật quảng cáo, quy chuẩn của công ty; tốn công mà không ra đơn
 - Cần: Hệ thống làm content nhanh, có thể dạy lại cho tuyến dưới
 - Dùng AI để: Tái chế bài giảng, viết caption, tóm tắt Zoom, tạo FAQ từ câu hỏi trong group
 
-Stakeholder 2 — [F1 mới (tuyến dưới vừa gia nhập)]
+Stakeholder 2 — Tuyến dưới (F1/F2 — không phân biệt cấp, cùng nhu cầu)
 - Kỳ vọng: Được đào tạo nhanh, có thu nhập trong 30–60 ngày đầu
 - Sợ: Không biết bắt đầu từ đâu, sợ bị từ chối khi tiếp cận khách hàng, sợ không làm được
 - Cần: Checklist rõ ràng, tài liệu đào tạo đơn giản, mẫu bài đăng để bắt đầu
 - Dùng AI để: Tập viết caption, chuẩn bị câu trả lời xử lý từ chối, hiểu sản phẩm nhanh hơn
 
-Stakeholder 3 — [Khách hàng tiềm năng (chưa gia nhập)]
-- Kỳ vọng: Thông tin rõ ràng, không bị chèo kéo, thấy được bằng chứng thực tế
-- Sợ: Bị lừa, mất tiền, mất thời gian vào mô hình không uy tín
-- Cần: Testimonial/câu chuyện có kết quả thật, review sản phẩm trung thực, giải thích mô hình dễ hiểu
-- Dùng AI để: (Không trực tiếp dùng AI — nhưng hưởng lợi từ content Leader làm bằng AI)
+Stakeholder 3 — Khách hàng tiềm năng mua hàng
+- Kỳ vọng: Sản phẩm hiệu quả, giá hợp lý, mua dễ dàng không bị ép buộc
+- Sợ: Mua phải hàng kém chất lượng, bị chèo kéo gia nhập hệ thống sau khi mua
+- Cần: Review trung thực, thông tin rõ ràng về sản phẩm, quy trình mua đơn giản
+- Dùng AI để: (Không trực tiếp — hưởng lợi từ content review sản phẩm & FAQ mà Leader tạo bằng AI)
+
+Stakeholder 4 — Khách hàng tiềm năng tuyển dụng (muốn có thêm thu nhập, chưa gia nhập)
+- Kỳ vọng: Cơ hội kiếm thêm thu nhập thật sự, không phải mô hình lừa đảo
+- Sợ: Mất tiền đầu tư ban đầu, bị ép mua hàng, mất quan hệ bạn bè vì chào mời
+- Cần: Bằng chứng thu nhập thực tế, giải thích mô hình minh bạch, lộ trình rõ ràng để bắt đầu
+- Dùng AI để: (Không trực tiếp — hưởng lợi từ content storytelling & testimonial Leader tạo bằng AI)
+
+Stakeholder 5 — Công ty (nhà phân phối / brand chủ)
+- Kỳ vọng: Leader đại diện thương hiệu đúng chuẩn, tăng doanh số, mở rộng mạng lưới bền vững
+- Sợ: Leader đăng content sai quy chuẩn gây kiện tụng, hứa hẹn thu nhập không thực tế, làm xấu hình ảnh thương hiệu
+- Cần: Leader tuân thủ policy truyền thông, dùng đúng tên/logo/hình ảnh được phép
+- Dùng AI để: (Gián tiếp — công ty hưởng lợi khi Leader dùng AI làm content đúng chuẩn, nhất quán)
 ```
 
 ## 8. Assignment Buổi 3 — Decomposition & Mapping cho domain của bạn
