@@ -1,8 +1,8 @@
 # Buổi 5 — Expansion & Research Depth
+> Phiên bản: v4
 
 Quét rộng có kỷ luật, chọn nhánh để đào sâu
 
----
 
 ## 0. Bạn đã có gì trước Buổi 5?
 
@@ -19,6 +19,8 @@ Buổi 5 sẽ **dùng lại toàn bộ** để:
 - Mở rộng chủ đề theo chiều rộng (không bị hẹp miền).
 - Chọn node để đào sâu (không tạt ngang vô tổ chức).
 - Thiết kế Research Path — lộ trình breadth → selection → depth — **có checkpoint & feedback**.
+
+> **Lưu ý về "node" trong buổi này:** Trong các buổi trước, "node" là phần tử nhỏ trong Decomposition Tree. Trong Buổi 5, "node" và "miền" được dùng thay thế nhau để chỉ các **nhánh/miền lớn** của bài toán (cấp 1–2 của Decomposition Tree) — là đối tượng để phân nhóm ưu tiên và chọn đào sâu. Không phải node lá cấp 3–4.
 
 ---
 
@@ -41,6 +43,20 @@ Sau buổi này, bạn:
 - Adjacent-domain Map (phân loại: giải thích / ứng dụng + ngưỡng dừng)
 - Node Prioritization Table (và plan feedback)
 - Research Path v1 (3 pha + checkpoint + gắn với deliverable)
+
+**Luồng kết nối giữa các artifact:**
+
+```
+Framing Brief
+    ⟶ Artifact 1 (Exploration Map)      → biết phải quét miền gì
+        ⟶ Artifact 2 (Keyword Shortlist) → biết tìm bằng từ gì
+            ⟶ Artifact 3 (Facet Matrix)  → biết nhìn từ góc nào
+                ⟶ Artifact 4 (Adjacent-domain Map) → biết kéo gì thêm, khi nào dừng
+                    ⟶ Artifact 5 (Node Prioritization) → biết đào sâu chỗ nào
+                        ⟶ Artifact 6 (Research Path)   → biết làm gì, tuần nào, đo bằng gì
+```
+
+Mỗi artifact **nhận đầu vào từ artifact trước** và **tạo đầu ra cho artifact sau**. Mục 9 — Assignment Mẫu Hoàn Chỉnh trình bày toàn bộ luồng này qua 1 ví dụ liên tục.
 
 ---
 
@@ -112,6 +128,8 @@ Dùng kỹ thuật này ở **đầu** một dự án nghiên cứu mới, hoặ
 > 1. Nếu tôi chỉ có X giờ research, phần core hiện tại có đang quá rộng không?
 > 2. Có miền nào trong "extended" mà thực ra tôi cần nó trước khi làm được phần core không?
 > 3. Có miền nào trong "core" mà thực ra thuộc về người khác quyết định (không phải tôi) không?
+>
+> **Thêm 1 cách kiểm tra bằng nguồn ngoài:** Tìm 1–2 bài viết/báo cáo ngành về chủ đề này. Liệt kê các từ khóa họ dùng trong tiêu đề mục lục. Có miền nào của họ mà bạn đang xếp Out-of-scope không? Nếu có → xem lại lý do xếp nhóm đó.
 
 ### Prompt mẫu
 
@@ -155,6 +173,8 @@ Trả ra dạng bảng Markdown.
 - "Kỹ năng feedback của quản lý" ban đầu xếp Extended, nhưng sau khi kiểm tra lại thấy đây là điều kiện để hệ thống chạy được → nâng lên Near.
 - "Luật lao động" xếp Out-of-scope vì đây là quyết định của bộ phận khác.
 
+> **→ Artifact 1 dẫn đến Artifact 2 như thế nào:** Exploration Map cho biết *miền nào* cần quét. Nhưng chỉ biết "cần quét Calibration & bias" chưa đủ — nếu chỉ gõ "performance bias" vào Google Scholar, kết quả sẽ rất hạn hẹp. Keyword Matrix (Artifact 2) mở rộng vốn từ để tìm kiếm được rộng và đúng hơn.
+
 ---
 
 ## 5. Kỹ thuật 2 — Query Expansion & Keyword Mapping
@@ -168,6 +188,8 @@ Trả ra dạng bảng Markdown.
 Dùng khi bạn thấy mình chỉ lặp đi lặp lại 1–2 từ khóa khi tra cứu hoặc hỏi AI, và kết quả bắt đầu lặp lại nhau. Cũng dùng khi bắt đầu nghiên cứu một chủ đề mới để xây "vốn từ" trước.
 
 ### 4 lớp từ khóa
+
+Đây là framework tác giả thiết kế theo mục đích sử dụng thực hành. Các lĩnh vực như Information Retrieval có cách phân loại riêng theo quan hệ ngữ nghĩa (synonym, hypernym, hyponym…) — cách phân loại dưới đây đơn giản hóa để dễ áp dụng ngay, ưu tiên câu hỏi "dùng khi nào" hơn là "quan hệ ngữ nghĩa là gì".
 
 | Lớp | Mô tả | Ví dụ (domain HR) |
 |---|---|---|
@@ -248,6 +270,8 @@ Core term hiện tại tôi dùng là:
 - `Forced distribution` — [Cẩn trọng] Được dùng nhiều ở thập niên 2000 (GE model), hiện nhiều nghiên cứu cho thấy tác hại. Cần đọc cả hai chiều trước khi áp dụng.
 - `360-degree feedback reliability` — [Cần kiểm chứng] Hiệu quả thực tế phụ thuộc rất nhiều vào thiết kế và văn hóa tổ chức. Tìm paper từ 2015 trở đi.
 
+> **→ Artifact 2 dẫn đến Artifact 3 như thế nào:** Keyword Shortlist cho biết *từ khóa gì* để tìm. Nhưng khi đã tìm được tài liệu, cần đọc từ *góc nào*? Cùng một bài về "performance review process" có thể được đọc theo góc operational (thiết kế quy trình), góc User/nhân viên (họ cảm thấy gì), hoặc góc Ethical (ai bị thiệt thòi). Facet Matrix (Artifact 3) giúp không bỏ sót góc quan trọng khi đọc.
+
 ---
 
 ## 6. Kỹ thuật 3 — Faceted Exploration
@@ -264,11 +288,15 @@ Dùng khi bạn đã có Exploration Map và muốn đi sâu hơn vào một nod
 
 ### Core facet & Domain-specific facet
 
+Bộ 4 core facet dưới đây là framework thực hành do tác giả đề xuất — không phải chuẩn học thuật cố định. Không có bộ facet "đúng tuyệt đối" cho mọi domain; sau 2–3 lần áp dụng, bạn nên điều chỉnh theo kinh nghiệm của mình.
+
 **Core facet (áp dụng cho hầu hết domain):**
-- **Technical/Operational** — Vận hành, cơ chế, quy trình, công cụ.
-- **User/Human** — Trải nghiệm, khó khăn, hành vi của người liên quan.
-- **Organizational** — Chính sách, quy định, workflow cấp tổ chức.
-- **Ethical/Fairness** — Công bằng, bias, rủi ro không lường trước.
+- **Technical/Operational** — Vận hành, cơ chế, quy trình, công cụ. Câu hỏi điển hình: "Cái này hoạt động như thế nào từng bước?"
+- **User/Human** — Trải nghiệm, khó khăn, hành vi của từng nhóm người liên quan. Câu hỏi điển hình: "Nhóm người này gặp khó khăn gì? Họ phản ứng ra sao?"
+- **Organizational** — Chính sách, quy định, quyết định cấp tổ chức. Câu hỏi điển hình: "Tổ chức cần quy định gì? Ai có quyền quyết định gì?"
+- **Ethical/Fairness** — Công bằng, bias hệ thống, rủi ro không lường trước với các nhóm yếu thế. Câu hỏi điển hình: "Nhóm nào có thể bị thiệt thòi? Bias nào ẩn trong thiết kế?"
+
+> **Ranh giới giữa các facet:** User/Human hỏi về trải nghiệm và hành vi cá nhân; Organizational hỏi về chính sách và quyền quyết định cấp tổ chức; Ethical/Fairness hỏi về tác động hệ thống và nhóm dễ bị tổn thương. Nếu nội dung bạn định viết vào Ethical đã có trong User → để ở User, đánh dấu *(E)* bên cạnh. Mỗi facet nên dẫn đến **loại nguồn khác nhau** và **quyết định thiết kế khác nhau**.
 
 **Domain-specific facet (bạn tự thêm):** Ví dụ với HR:
 - **Legal/Compliance** — Luật lao động, quy định pháp lý liên quan.
@@ -285,7 +313,7 @@ Dùng khi bạn đã có Exploration Map và muốn đi sâu hơn vào một nod
 
 **Bước 2:** Với mỗi facet, đặt 1–2 câu hỏi chính cần trả lời.
 
-**Bước 3:** Gắn facet với node và keyword — với mỗi facet, chỉ rõ node nào trong Decomposition Tree cần "soi vào" qua facet này, và 2–3 keyword để truy vấn.
+**Bước 3:** Gắn facet với node và keyword — với mỗi facet, chỉ rõ node nào cần "soi vào" qua facet này, và 2–3 keyword để truy vấn.
 
 ### Prompt mẫu
 
@@ -317,10 +345,14 @@ Giữ ngắn gọn, thực dụng.
 |---|---|---|---|---|
 | **Operational** | Quy trình gồm bao nhiêu bước? Ai làm gì, khi nào? | Template, SOP, hướng dẫn thực hành | Quy trình đánh giá, Biểu mẫu | "performance review process steps", "annual appraisal workflow" |
 | **User/Human** (nhân viên) | Nhân viên cảm thấy thế nào về quá trình? Họ sợ điều gì? | Khảo sát, case study, bài viết trải nghiệm | Trải nghiệm nhân viên, Communication | "employee experience performance review", "appraisal anxiety" |
-| **User/Human** (manager) | Manager gặp khó khăn gì khi đánh giá? Họ có xu hướng thiên kiến nào? | Paper về rater bias, training guide | Kỹ năng feedback, Calibration | "manager rating bias", "halo effect performance appraisal" |
+| **User/Human** (manager) | Manager gặp khó khăn gì khi đánh giá? Họ bị áp lực từ đâu? | Training guide, khảo sát manager | Kỹ năng feedback, quản lý thời gian | "manager challenges performance review", "appraisal workload manager" |
 | **Organizational** | Công ty cần policy gì? Kết quả đánh giá gắn với gì (lương, thăng tiến)? | HR policy template, company handbook mẫu | Chính sách lương thưởng, Thăng tiến | "performance management policy", "merit increase guidelines" |
-| **Ethical/Fairness** | Hệ thống có công bằng với tất cả nhóm nhân viên không? | Research về bias, DEI in performance | Calibration, Bias check | "fairness performance evaluation", "gender bias appraisal" |
+| **Ethical/Fairness** | Hệ thống có công bằng với tất cả nhóm nhân viên không? Bias hệ thống nào ẩn trong thiết kế? | Research về bias, DEI in performance | Calibration, Bias check | "fairness performance evaluation", "gender bias appraisal", "structural bias rating" |
 | **Manager capability** *(domain-specific)* | Manager có đủ kỹ năng feedback constructive không? Cần train gì? | Training module, competency guide | Đào tạo manager, Feedback skills | "manager feedback training", "performance conversation skills" |
+
+> *Lưu ý:* Facet "User/Human (manager)" hỏi về trải nghiệm và áp lực của manager khi đánh giá; Facet "Ethical/Fairness" hỏi về bias hệ thống tác động lên nhóm nhân viên. Đây là hai câu hỏi khác nhau dẫn đến nguồn khác nhau — facet trước tìm training guide, facet sau tìm research về bias và DEI.
+
+> **→ Artifact 3 dẫn đến Artifact 4 như thế nào:** Nhìn qua facet "Manager capability", phát sinh câu hỏi: "Manager cần kỹ năng gì để calibration đúng?" — câu hỏi này không trả lời được bằng tài liệu HR thuần túy. Đây là lúc cần Adjacent-domain Map (Artifact 4) để xác định domain nào bổ sung được câu trả lời này, và đặt ngưỡng dừng để không lạc ra ngoài.
 
 ---
 
@@ -349,9 +381,14 @@ Dùng sau khi đã có Exploration Map và Facet Matrix. Dùng khi bạn nhận 
 
 **Bước 2:** Với mỗi domain, trả lời: Nó bổ sung gì? Thuộc loại nào? Rủi ro nếu ôm quá? Khi nào nên kéo vào?
 
-**Bước 3 — Ngưỡng dừng:** Đặt quy tắc cụ thể. Ví dụ: "Nếu sau 3 giờ đọc mà domain này chưa giúp mình trả lời được 1 câu hỏi cụ thể trong bài toán chính → tạm dừng, quay lại core."
+**Bước 3 — Ngưỡng dừng:** Đặt quy tắc cụ thể dựa trên **output**, không chỉ thời gian. Ví dụ: "Nếu sau khi đọc xong mà domain này chưa giúp mình trả lời được 1 câu hỏi cụ thể trong bài toán chính → tạm dừng, quay lại core."
 
-> **Tiêu chí "đọc đã giúp được":** Domain lân cận xem như "đã giúp được" khi bạn có thể trả lời cụ thể ít nhất 1 trong các câu sau: (1) Tôi hiểu thêm *tại sao* một phần trong hệ thống hoạt động hoặc không hoạt động. (2) Tôi có thêm ít nhất 1 ý tưởng cụ thể để thay đổi thiết kế. (3) Tôi biết rủi ro nào cần tránh mà trước đó không thấy.
+> **Tiêu chí "đọc đã giúp được" — đây là ngưỡng dừng chính:** Domain lân cận xem như "đã giúp được" khi bạn có thể trả lời cụ thể ít nhất 1 trong các câu sau:
+> 1. Tôi hiểu thêm *tại sao* một phần trong hệ thống hoạt động hoặc không hoạt động.
+> 2. Tôi có thêm ít nhất 1 ý tưởng cụ thể để thay đổi thiết kế.
+> 3. Tôi biết rủi ro nào cần tránh mà trước đó không thấy.
+>
+> Ngưỡng giờ trong bảng bên dưới là **giới hạn tối đa** — nếu chưa đạt 1 trong 3 câu trên sau X giờ, dừng sớm hơn.
 
 ### Prompt mẫu
 
@@ -376,15 +413,17 @@ Framing Brief của tôi:
 
 | Domain lân cận | Loại | Giá trị bổ sung | Rủi ro nếu ôm quá | Khi nào kéo vào | Ngưỡng dừng |
 |---|---|---|---|---|---|
-| Tâm lý học tổ chức (Org Psychology) | Giải thích | Hiểu tại sao con người phản ứng với đánh giá theo cách họ làm (lo âu, phòng thủ, thiên kiến) | Quá hàn lâm, xa thực hành | Khi thiết kế phần communication và employee experience | 3 giờ đọc |
-| Change management | Ứng dụng | Framework triển khai thay đổi (Kotter 8 bước, ADKAR) rất phù hợp khi roll-out hệ thống mới | Lạc sang quản lý dự án thuần | Khi lên kế hoạch triển khai hệ thống cho toàn công ty | 4 giờ đọc |
-| Luật lao động VN | Ứng dụng | Một số điều khoản trong luật ảnh hưởng đến cách ghi nhận đánh giá, sa thải có cơ sở | Phức tạp và cần chuyên gia, không tự xử được | Khi thiết kế phần kết nối PM với kỷ luật lao động | 2 giờ, sau đó hỏi legal |
-| Motivation theory (Maslow, SDT, Herzberg) | Giải thích | Hiểu sâu hơn tại sao hệ thống có/không thúc đẩy hiệu suất | Quá lý thuyết, khó explain cho lãnh đạo | Khi viết phần "triết lý thiết kế" cho tài liệu nội bộ | 2 giờ đọc |
-| Data analytics / HR metrics | Ứng dụng | Biết đo lường kết quả hệ thống PM bằng số liệu cụ thể | Đi sâu vào BI/data engineering không cần thiết | Khi thiết kế phần đo lường hiệu quả hệ thống | 3 giờ đọc |
+| Tâm lý học tổ chức (Org Psychology) | Giải thích | Hiểu tại sao con người phản ứng với đánh giá theo cách họ làm (lo âu, phòng thủ, thiên kiến) | Quá hàn lâm, xa thực hành | Khi thiết kế phần communication và employee experience | Tối đa 3 giờ |
+| Change management | Ứng dụng | Framework triển khai thay đổi (Kotter 8 bước, ADKAR) rất phù hợp khi roll-out hệ thống mới | Lạc sang quản lý dự án thuần | Khi lên kế hoạch triển khai hệ thống cho toàn công ty | Tối đa 4 giờ |
+| Luật lao động VN | Ứng dụng | Một số điều khoản trong luật ảnh hưởng đến cách ghi nhận đánh giá, sa thải có cơ sở | Phức tạp và cần chuyên gia, không tự xử được | Khi thiết kế phần kết nối PM với kỷ luật lao động | Tối đa 2 giờ, sau đó hỏi legal |
+| Motivation theory (Maslow, SDT, Herzberg) | Giải thích | Hiểu sâu hơn tại sao hệ thống có/không thúc đẩy hiệu suất | Quá lý thuyết, khó explain cho lãnh đạo | Khi viết phần "triết lý thiết kế" cho tài liệu nội bộ | Tối đa 2 giờ |
+| Data analytics / HR metrics | Ứng dụng | Biết đo lường kết quả hệ thống PM bằng số liệu cụ thể | Đi sâu vào BI/data engineering không cần thiết | Khi thiết kế phần đo lường hiệu quả hệ thống | Tối đa 3 giờ |
 
 **Domain nên tích hợp vào Research Path:**
 - **Change management** (tuần 3) → phục vụ node "Kế hoạch triển khai" trong deliverable chính.
 - **HR metrics / Data analytics** (tuần 4) → phục vụ node "Đo lường & đánh giá hiệu quả hệ thống".
+
+> **→ Artifact 4 dẫn đến Artifact 5 như thế nào:** Bây giờ đã biết có 3 miền Core, 2 miền Near, và 2 domain lân cận có thể kéo vào. Nhưng với 4 tuần và 5–6 giờ/tuần, không thể đào sâu tất cả. Node Prioritization (Artifact 5) giúp chọn 1–2 node để đầu tư thực sự, và xác định node nào chỉ cần quick-scan.
 
 ---
 
@@ -398,16 +437,23 @@ Framing Brief của tôi:
 
 Dùng sau khi đã có Exploration Map, Keyword Matrix, Facet Matrix, và Adjacent-domain Map. Đây là bước chuyển từ "biết mình cần học gì" sang "lên lịch học như thế nào."
 
-### 4 tiêu chí chấm điểm Node
+### 4 tiêu chí đánh giá Node — và cách đọc kết quả
+
+Bộ tiêu chí dưới đây là framework thực hành do tác giả đề xuất. Các con số nên được dùng như **la bàn định hướng**, không phải phán quyết cuối cùng — điểm tổng có thể bằng nhau nhưng lý do chọn lại khác nhau.
+
+**Lưu ý quan trọng về Confusion risk:** Đây là tiêu chí khác bản chất so với 3 tiêu chí còn lại. Ba tiêu chí đầu đo "tầm quan trọng"; Confusion risk đo "rủi ro nhận thức". Một node có Confusion risk cao (4–5) nên được đào sâu *để tránh làm sai*, không phải *vì nó quan trọng cấu trúc*. Sau khi có điểm tổng, hãy đọc thêm cột "Confusion risk" riêng để quyết định có flag node đó là ⚠️ "dễ làm sai" không.
 
 | Tiêu chí | Câu hỏi | Thang |
 |---|---|---|
 | **Centrality** | Node này gần lõi bài toán cỡ nào? | 1–5 |
 | **Dependency** | Có nhiều node khác phụ thuộc vào nó không? | 1–5 |
 | **Applicability** | Giá trị áp dụng thực tế cao không? | 1–5 |
-| **Confusion risk** | Dễ hiểu sai / dễ làm sai không? | 1–5 |
+| **Confusion risk** ⚠️ | Dễ hiểu sai / dễ làm sai không? | 1–5 |
 
-Node có tổng điểm cao nhất → ưu tiên đào sâu trước.
+**Cách đọc kết quả:**
+- Node điểm tổng cao + Confusion risk thấp → **Depth flagship**: đào sâu vì quan trọng.
+- Node điểm tổng trung bình + Confusion risk cao (⚠️) → **Risk flagship**: đào sâu vì dễ làm sai, bỏ qua sẽ gây hại.
+- Node điểm tổng thấp → quick-scan hoặc để sau.
 
 ### Feedback loop
 
@@ -436,11 +482,13 @@ Dưới đây là:
 1) Tạo bảng Node Prioritization dạng Markdown,
    chấm theo 4 tiêu chí: Centrality / Dependency / Applicability / Confusion risk (thang 1–5).
    Giải thích ngắn 1 câu cho điểm số quan trọng.
+   Đánh dấu ⚠️ bên cạnh node có Confusion risk ≥ 4.
 
 2) Dựa trên bảng và constraint:
    - Thời gian: [X tuần]
    - Deliverable: [VD: framework đánh giá + hướng dẫn triển khai]
-   Gợi ý 1–2 node flagship và 1–2 node chỉ cần quick-scan.
+   Gợi ý 1–2 node flagship (phân biệt: Depth flagship vs Risk flagship nếu có).
+   Gợi ý 1–2 node chỉ cần quick-scan.
 
 3) Thiết kế Research Path v1 (3–4 tuần), dạng Markdown gồm:
    - 3 pha: Breadth / Selection / Depth
@@ -452,27 +500,29 @@ Dưới đây là:
 
 ### Ví dụ đầu ra đã điền — Node Prioritization Table (domain HR)
 
-| Node | Centrality | Dependency | Applicability | Confusion risk | Tổng | Ghi chú |
+| Node | Centrality | Dependency | Applicability | Confusion risk | Tổng | Loại flagship |
 |---|:---:|:---:|:---:|:---:|:---:|---|
-| Thiết kế framework đánh giá (KPI vs competency) | 5 | 5 | 5 | 4 | **19** | Nếu thiếu node này, không làm được gì tiếp |
-| Quy trình calibration & xử lý bias | 4 | 4 | 5 | 5 | **18** | Dễ bị bỏ qua, dễ làm sai, impact lớn với fairness |
-| Quy trình đánh giá (chu kỳ, biểu mẫu, ai làm gì) | 4 | 3 | 5 | 3 | **15** | Quan trọng nhưng dễ tìm template sẵn |
-| Kết nối PM với lương/thưởng/thăng tiến | 3 | 4 | 4 | 3 | **14** | Quan trọng nhưng phụ thuộc quyết định C-suite |
-| Đào tạo manager về feedback | 3 | 3 | 4 | 4 | **14** | Quick-scan trước, sâu sau nếu cần |
+| Thiết kế framework đánh giá (KPI vs competency) | 5 | 5 | 5 | 4 | **19** | Depth flagship — mọi thứ khác phụ thuộc vào node này |
+| Quy trình calibration & xử lý bias | 4 | 4 | 5 | 5 ⚠️ | **18** | Risk flagship — Confusion risk 5/5: dễ bị bỏ qua, dễ làm sai |
+| Quy trình đánh giá (chu kỳ, biểu mẫu, ai làm gì) | 4 | 3 | 5 | 3 | **15** | Quick-scan — dễ tìm template sẵn |
+| Kết nối PM với lương/thưởng/thăng tiến | 3 | 4 | 4 | 3 | **14** | Quick-scan — phụ thuộc quyết định C-suite |
+| Đào tạo manager về feedback | 3 | 3 | 4 | 4 ⚠️ | **14** | Quick-scan trước, sâu sau nếu cần |
 
 **Node flagship được chọn:**
-1. **Thiết kế framework đánh giá** → đây là core của toàn bộ deliverable, mọi thứ khác phụ thuộc vào node này.
-2. **Calibration & xử lý bias** → Confusion risk cao (5/5), nếu không hiểu đúng sẽ thiết kế hệ thống bất công mà không biết.
+1. **Thiết kế framework đánh giá** *(Depth flagship)* → Centrality + Dependency cao nhất: là core của toàn bộ deliverable.
+2. **Calibration & xử lý bias** *(Risk flagship)* → Confusion risk 5/5: nếu không hiểu đúng sẽ thiết kế hệ thống bất công mà không biết — đây là lý do đào sâu, không phải vì điểm tổng.
 
 **Node quick-scan:**
 - Quy trình đánh giá (biểu mẫu) — có thể dùng template sẵn, không cần nghiên cứu từ đầu.
 - Đào tạo manager — đưa vào phase 2 của project, không phải ưu tiên hiện tại.
 
+> **→ Artifact 5 dẫn đến Artifact 6 như thế nào:** Đã biết *đào sâu vào đâu* và *vì lý do gì*. Bây giờ cần lịch trình: tuần nào làm gì, node nào gắn với phần nào của deliverable, và dừng lại ở đâu để kiểm tra xem hướng đi có còn đúng không. Research Path (Artifact 6) là bước hiện thực hóa toàn bộ quyết định từ 5 artifact trước.
+
 ---
 
 ## 9. Assignment Mẫu Hoàn Chỉnh — Domain HR
 
-> Đây là ví dụ mẫu cho thấy 6 artifact được tạo ra từ **cùng 1 Framing Brief**. Đọc phần này trước khi tự làm bài tập.
+> Đây là ví dụ mẫu cho thấy 6 artifact được tạo ra từ **cùng 1 Framing Brief**, và cách chúng **kết nối thành một luồng quyết định liên tục**. Đọc phần này theo thứ tự — mỗi artifact nhận đầu vào từ artifact trước. Để xem toàn bộ 6 artifact đã điền đầy đủ với lời giải thích luồng quyết định, xem file **Assignment Mẫu Hoàn Chỉnh** đi kèm.
 
 ### Framing Brief (dùng xuyên suốt)
 
@@ -499,6 +549,8 @@ Constraint: Không có ngân sách phần mềm trong năm nay. Manager chưa đ
 
 **Sanity check:** Với 5–6 giờ/tuần × 4 tuần = ~22 giờ, 3 miền Core là vừa đủ. "Kỹ năng feedback manager" được nâng từ Extended → Near vì đây là điều kiện để hệ thống chạy được.
 
+**→ Dẫn đến Artifact 2:** Biết 3 miền Core cần quét, nhưng cần vốn từ khóa đủ rộng để tìm kiếm hiệu quả.
+
 ---
 
 ### Artifact 2 — Keyword Shortlist
@@ -510,6 +562,8 @@ Constraint: Không có ngân sách phần mềm trong năm nay. Manager chưa đ
 - Research: Continuous PM, 360-degree feedback reliability, Rater bias
 - Case: OKR SME, Performance review manufacturing, Talent calibration process
 
+**→ Dẫn đến Artifact 3:** Có từ khóa để tìm tài liệu. Cần Facet Matrix để biết đọc tài liệu đó từ góc nào.
+
 ---
 
 ### Artifact 3 — Facet Matrix
@@ -519,7 +573,9 @@ Constraint: Không có ngân sách phần mềm trong năm nay. Manager chưa đ
 **Tóm tắt 6 facet cho node "Quy trình đánh giá cuối năm":**
 Operational / User-nhân viên / User-manager / Organizational / Ethical-Fairness / Manager capability
 
-**Phát hiện quan trọng nhờ faceted thinking:** Nhìn từ góc "User/Human - manager" phát hiện node "Calibration & bias" quan trọng hơn dự kiến → nâng thứ tự ưu tiên trong Node Prioritization.
+**Phát hiện quan trọng nhờ faceted thinking:** Nhìn từ góc "Ethical/Fairness" phát hiện câu hỏi về bias hệ thống — dẫn đến nhận ra Calibration quan trọng hơn dự kiến. Nhìn từ góc "User/Human (manager)" phát hiện manager không chỉ thiếu kỹ năng feedback mà còn bị áp lực thời gian → cần thiết kế quy trình đánh giá gọn hơn.
+
+**→ Dẫn đến Artifact 4:** Câu hỏi từ facet "Manager capability" không trả lời được bằng HR thuần túy. Cần Adjacent-domain Map để xác định domain nào bổ sung được.
 
 ---
 
@@ -531,19 +587,23 @@ Operational / User-nhân viên / User-manager / Organizational / Ethical-Fairnes
 - Change management (tuần 3) → phục vụ kế hoạch roll-out
 - HR metrics (tuần 4) → phục vụ dashboard đo lường
 
+**→ Dẫn đến Artifact 5:** Đã biết tổng thể: 3 miền Core + 2 Near + 2 Adjacent. Cần Node Prioritization để chọn 1–2 nơi đầu tư thực sự trong 4 tuần.
+
 ---
 
 ### Artifact 5 — Node Prioritization Table
 
 *(Xem đầy đủ ở Mục 8 — ví dụ đã điền)*
 
-**Node flagship:** Thiết kế framework (19/20) + Calibration & bias (18/20)
+**Node flagship:** Thiết kế framework *(Depth flagship, 19/20)* + Calibration & bias *(Risk flagship ⚠️, 18/20)*
 
-**Kế hoạch feedback sau 3 tuần:**
-- Sau tuần 3: So lại node nào thực sự tốn nhiều thời gian nhất.
+**Kế hoạch feedback sau 4 tuần:**
+- So lại: node nào thực sự tốn nhiều thời gian nhất?
 - Hỏi: "Node nào giúp mình ra quyết định thiết kế nhiều nhất?"
-- Nếu "Calibration" ít được dùng → hạ xuống Near cho lần sau.
+- Nếu "Calibration" ít được dùng trong thực tế → điều chỉnh Confusion risk xuống cho lần sau.
 - Ghi lại 1–2 bài học vào Framing Brief của project tiếp theo.
+
+**→ Dẫn đến Artifact 6:** Biết đào sâu vào đâu và vì lý do gì. Cần Research Path để lên lịch cụ thể.
 
 ---
 
@@ -583,12 +643,12 @@ Operational / User-nhân viên / User-manager / Organizational / Ethical-Fairnes
 
 **Hoạt động:**
 - Quick-scan 3–4 node ứng viên (1–2 nguồn/node)
-- Chấm điểm 4 tiêu chí
-- Xác nhận node flagship: Thiết kế framework + Calibration
+- Chấm điểm 4 tiêu chí, flag node có Confusion risk ≥ 4
+- Xác nhận node flagship: Thiết kế framework (Depth) + Calibration (Risk)
 
 **Checkpoint B (cuối tuần 2):**
-- Node "Thiết kế framework" có đủ tài liệu tham khảo để thiết kế không?
-- Nếu tài liệu về calibration quá hàn lâm → giảm từ flagship xuống quick-scan
+- Node "Thiết kế framework" có đủ tài liệu tham khảo thực hành để thiết kế không?
+- Nếu tài liệu về calibration quá hàn lâm → vẫn giữ là Risk flagship nhưng ưu tiên tìm nguồn thực hành
 - Tiêu chí pivot: node không có ít nhất 3 nguồn thực hành cụ thể (không chỉ lý thuyết) → xem lại lựa chọn
 
 ---
@@ -612,9 +672,11 @@ Operational / User-nhân viên / User-manager / Organizational / Ethical-Fairnes
 - Node "Calibration" → Trang 2: SOP calibration + checklist tránh bias
 - HR metrics (Adjacent) → Trang 3: Dashboard đo lường đơn giản
 
-**Sau tuần 4:**
-- Review lại Node Prioritization với trải nghiệm thực tế
-- Ghi 2–3 "lessons learned" về lựa chọn node và quét keyword
+**Sau tuần 4 — Nhìn lại Exploration Map ban đầu:**
+- "Calibration & bias" ban đầu xếp Core nhưng chưa chắc → tuần 2 xác nhận Confusion risk 5/5, đúng là cần đào sâu.
+- "Kỹ năng feedback manager" đã được nâng Near ở Sanity check → xác nhận đúng: nếu không đưa vào Near thì Research Path thiếu 1 mảng quan trọng.
+- "Luật lao động" vẫn đúng là Out-of-scope.
+- Bài học cho lần sau: khi làm Exploration Map của project tiếp theo, hỏi sớm "Có node nào Confusion risk cao mà mình đang xếp Near/Extended vì chưa biết nó quan trọng không?"
 ```
 
 ---
@@ -625,25 +687,25 @@ Operational / User-nhân viên / User-manager / Organizational / Ethical-Fairnes
 
 Dùng Framing Brief từ Buổi 1 của bạn. Nộp 1 tài liệu markdown gồm 6 artifact:
 
-1. **Exploration Map** — Bảng core/near/extended/out-of-scope-now + 3–5 dòng sanity check.
+1. **Exploration Map** — Bảng core/near/extended/out-of-scope-now + 3–5 dòng sanity check (bao gồm cả kiểm tra bằng nguồn ngoài).
 2. **Keyword Matrix + Shortlist** — Bảng term + mô tả + khi nào dùng. Shortlist 10–15 term + 2–3 term "cần kiểm chứng".
-3. **Facet Matrix** — Ít nhất 4 facet (3–4 core + 1–2 domain-specific). Mỗi facet có câu hỏi chính + loại nguồn + node liên quan + keyword.
-4. **Adjacent-domain Map** — 3–5 domain lân cận: loại / giá trị / rủi ro / khi nào kéo vào / ngưỡng dừng.
-5. **Node Prioritization Table + kế hoạch feedback** — Ít nhất 4 node, chấm 4 tiêu chí. Chọn 1–2 flagship. Viết 3–5 dòng kế hoạch review sau 2–4 tuần.
-6. **Research Path v1** — 3 pha, 2 checkpoint (A & B) với tiêu chí pivot. Chỉ rõ node flagship phục vụ phần nào của deliverable.
+3. **Facet Matrix** — Ít nhất 4 facet (3–4 core + 1–2 domain-specific). Mỗi facet có câu hỏi chính + loại nguồn + node liên quan + keyword. Mỗi facet phải dẫn đến loại nguồn khác nhau.
+4. **Adjacent-domain Map** — 3–5 domain lân cận: loại / giá trị / rủi ro / khi nào kéo vào / ngưỡng dừng (output-based, không chỉ giờ).
+5. **Node Prioritization Table + kế hoạch feedback** — Ít nhất 4 node, chấm 4 tiêu chí. Flag ⚠️ node có Confusion risk ≥ 4. Phân biệt Depth flagship vs Risk flagship nếu có. Viết 3–5 dòng kế hoạch review sau 2–4 tuần.
+6. **Research Path v1** — 3 pha, 2 checkpoint (A & B) với tiêu chí pivot. Chỉ rõ node flagship phục vụ phần nào của deliverable. Thêm đoạn "nhìn lại" cuối Pha 3.
 
 ### Rubric tự chấm
 
 | Tiêu chí | Mô tả | Điểm (0–5) |
 |---|---|---|
-| Breadth quality | Exploration Map bao quát đủ core/near/extended và có sanity check thực chất? | /5 |
-| Keyword architecture | Matrix + Shortlist có chiều sâu, dùng được để tìm kiếm thực, có kiểm chứng? | /5 |
-| Faceted thinking | Facet Matrix có core + domain-specific, không trùng nội dung, có nối node/keyword? | /5 |
-| Adjacent-domain judgment | Đã phân biệt giải thích/ứng dụng, đặt ngưỡng dừng rõ, không ôm quá nhiều? | /5 |
-| Node prioritization | Chọn node dựa trên tiêu chí rõ, có plan review sau khi áp dụng? | /5 |
-| Research Path clarity | Lộ trình 3 pha rõ ràng, checkpoint có tiêu chí pivot cụ thể, gắn với deliverable? | /5 |
+| Breadth quality | Exploration Map bao quát đủ core/near/extended, sanity check có dùng nguồn ngoài, không chỉ tự hỏi? | /5 |
+| Keyword architecture | Matrix + Shortlist có chiều sâu, dùng được để tìm kiếm thực, có kiểm chứng term technical? | /5 |
+| Faceted thinking | Facet Matrix có core + domain-specific, các facet dẫn đến nguồn khác nhau, không trùng nội dung? | /5 |
+| Adjacent-domain judgment | Đã phân biệt giải thích/ứng dụng, ngưỡng dừng dựa trên output (không chỉ giờ), không ôm quá nhiều? | /5 |
+| Node prioritization | Phân biệt Depth flagship vs Risk flagship, có plan review sau khi áp dụng? | /5 |
+| Research Path clarity | Lộ trình 3 pha rõ, checkpoint có tiêu chí pivot cụ thể, gắn với deliverable, có đoạn nhìn lại cuối Pha 3? | /5 |
 
-**Điểm tham chiếu:** Assignment mẫu ở Mục 9 đạt khoảng 4/5 ở mỗi tiêu chí — đó là mức kỳ vọng cho bài nộp.
+**Điểm tham chiếu:** 4/5 ở mỗi tiêu chí là mức kỳ vọng — tương đương chất lượng có thể dùng được trong tình huống công việc thật. 5/5 có nghĩa là artifact đủ chín để chia sẻ hoặc tái sử dụng cho project tương tự mà không cần sửa nhiều.
 
 ---
 
@@ -653,11 +715,11 @@ Nếu làm đủ 6 artifact, bạn đã có:
 
 - Bản đồ rộng đã sanity check — không chỉ liệt kê mà còn biết ưu tiên và biết dừng mở rộng đúng lúc.
 - Vốn từ khóa đủ dùng — không chỉ nhiều mà có chiến lược (shortlist + kiểm chứng).
-- Nhiều góc nhìn — facet matrix không cứng nhắc mà có thêm góc riêng của domain mình.
-- Ý thức liên ngành có kỷ luật — biết kéo domain lân cận vào đúng lúc, biết dừng đúng lúc.
-- Phương pháp chọn node — có tiêu chí, có feedback loop, không phải cảm tính.
-- Lộ trình học/nghiên cứu cụ thể — gắn deliverable thật, có checkpoint để pivot sớm nếu cần.
+- Nhiều góc nhìn — facet matrix không cứng nhắc mà có thêm góc riêng của domain mình, mỗi góc dẫn đến nguồn và quyết định khác nhau.
+- Ý thức liên ngành có kỷ luật — biết kéo domain lân cận vào đúng lúc, biết dừng dựa trên output, không chỉ đồng hồ.
+- Phương pháp chọn node — phân biệt Depth flagship và Risk flagship, có feedback loop, không phải cảm tính.
+- Lộ trình học/nghiên cứu cụ thể — gắn deliverable thật, có checkpoint để pivot sớm nếu cần, có đoạn nhìn lại để cải thiện lần sau.
 
 **Buổi 6–7** sẽ dùng node bạn đã chọn để đào sâu:
-- Buổi 6: Điều khiển Reasoning (CoT, ToT, causal, comparative, hypothesis).
-- Buổi 7: Validation & Epistemic Control (tách fact/assumption, self-critique, triangulation).
+- Buổi 6: Điều khiển Reasoning — các kỹ thuật tư duy có cấu trúc như Chain-of-Thought (CoT), Tree-of-Thought (ToT), suy luận nhân quả, so sánh, và kiểm định giả thuyết.
+- Buổi 7: Validation & Epistemic Control — tách fact/assumption, self-critique, triangulation từ nhiều nguồn.
