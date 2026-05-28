@@ -47,7 +47,7 @@ T = Transition
 O = Output
 
 Từ đó OUTCOME rõ ràng hơn. 
-Trả lời ITTO dạng bản
+Trả lời ITTO dạng bảng
 Cung cấp thêm SWOT của OUTCOME
 Làm rõ những develiries dành cho đối tượng người sử dụng.
 ```
